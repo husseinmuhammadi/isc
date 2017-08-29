@@ -35,6 +35,13 @@
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <generateApplicationXml>true</generateApplicationXml>
                     <modules>
+                        <jarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${core.artifactId}</artifactId>
+                            <bundleFileName>${core.archive.name}</bundleFileName>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                            <bundleDir>/</bundleDir>
+                        </jarModule>
                         <sarModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>${jpos.artifactId}</artifactId>
@@ -51,6 +58,11 @@
                     -->
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -64,6 +76,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${core.artifactId}</artifactId>
+            <version>${core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${jpos.artifactId}</artifactId>
