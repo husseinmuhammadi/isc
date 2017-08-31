@@ -1,0 +1,11 @@
+<server name="atm-ndc-proxy-server" class="org.jpos.q2.iso.QServer" logger="Q2">
+    <attr name="port" type="java.lang.Integer">9876</attr>
+    <attr name="minSessions" type="java.lang.Integer">1</attr>
+    <attr name="maxSessions" type="java.lang.Integer">10</attr>
+    <channel name="atm.channel" class="com.npci.financial.isc.core.atm.ndc.channel.AtmNdcProxyChannel"
+             packager="org.jpos.iso.packager.DummyPackager" logger="Q2">
+    </channel>
+    <request-listener
+            class="com.npci.financial.isc.core.atm.ndc.listener.ATMRequestListener" logger="Q2">
+    </request-listener>
+</server>
