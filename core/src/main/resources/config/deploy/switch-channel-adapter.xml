@@ -1,0 +1,12 @@
+<channel-adaptor name='SWITCH-NDC-ADAPTER-1'
+                 class="org.jpos.q2.iso.ChannelAdaptor" logger="Q2">
+    <channel class="com.npci.financial.isc.core.atm.ndc.channel.AtmNdcChannel" logger="Q2"
+             realm="ATM" packager="com.npci.financial.isc.core.atm.ndc.packager.NdcPackager">
+        <property name="host" value="172.20.35.209"/>
+        <property name="port" value="9876"/>
+        <property name="keep-alive" value="true"/>
+    </channel>
+    <in>switch-ndc-send</in>
+    <out>switch-ndc-receive</out>
+    <reconnect-delay>10000</reconnect-delay>
+</channel-adaptor>

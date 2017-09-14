@@ -8,6 +8,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>../utility</module>
+        <module>../model</module>
+        <module>../service</module>
+        <module>../api</module>
+        <module>../web</module>
         <module>../ear</module>
         <module>../jpos</module>
         <module>../core</module>
@@ -20,17 +25,36 @@
         
         <!-- ArtifactId prop -->
         <ear.artifactId>switch-ear</ear.artifactId>
-        <jpos.artifactId>q2mbean</jpos.artifactId>
+        <jpos.artifactId>jboss-service</jpos.artifactId>
         <core.artifactId>switch-core</core.artifactId>
+        <utility.artifactId>utility</utility.artifactId>
+        <model.artifactId>switch-model</model.artifactId>
+        <web.artifactId>switch-web</web.artifactId>
+        <api.artifactId>switch-api</api.artifactId>
+        <service.artifactId>switch-service</service.artifactId>
 
         <!-- Version prop -->
         <ear.version>1.0.0-SNAPSHOT</ear.version>
-        <jpos.version>1.0</jpos.version>
+        <jpos.version>1.0.0-SNAPSHOT</jpos.version>
         <core.version>1.0.0-SNAPSHOT</core.version>
+        <utility.version>1.0.0-SNAPSHOT</utility.version>
+        <model.version>1.0.0-SNAPSHOT</model.version>
+        <web.version>1.0.0-SNAPSHOT</web.version>
+        <api.version>1.0.0-SNAPSHOT</api.version>
+        <service.version>1.0.0-SNAPSHOT</service.version>
 
         <!-- Archive name prop -->
         <core.archive.name>core.jar</core.archive.name>
-        <jpos.archive.name>q2mbean-1.0.sar</jpos.archive.name>
+        <jpos.archive.name>jboss-service.sar</jpos.archive.name>
+        <model.archive.name>model.jar</model.archive.name>
+        <web.archive.name>web.war</web.archive.name>
+        <api.archive.name>api.jar</api.archive.name>
+        <ear.archive.name>library-ear</ear.archive.name>
+        <service.archive.name>service.jar</service.archive.name>
+        <utility.archive.name>utility.jar</utility.archive.name>
+
+        <!-- web -->
+        <web.contextRoot>/switch</web.contextRoot>
 
         <!-- database -->
         <dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>
@@ -70,12 +94,9 @@
         </persistence.xml>
 
         <shiro.version>1.2.4</shiro.version>
-
-
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -166,7 +187,6 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

@@ -47,6 +47,17 @@
                             <artifactId>${jpos.artifactId}</artifactId>
                             <bundleFileName>${jpos.archive.name}</bundleFileName>
                         </sarModule>
+                        <ejbModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${model.artifactId}</artifactId>
+                            <bundleFileName>${model.archive.name}</bundleFileName>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${web.artifactId}</artifactId>
+                            <bundleFileName>${web.archive.name}</bundleFileName>
+                            <contextRoot>${web.contextRoot}</contextRoot>
+                        </webModule>
                     </modules>
                     <!-- create jboss-app.xml and put it in META-INF folder, you can create this file manually
                     <jboss>
@@ -62,6 +73,38 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
+
+                <!--
+                <configuration>
+                    <hostname>172.20.35.178</hostname>
+                    <port>9990</port>
+                    <username>Hossein</username>
+                    <password>148941</password>
+                </configuration>
+                -->
+
+                <executions>
+                    <!-- Undeploy the application on clean -->
+                    <execution>
+                        <id>undeploy</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>undeploy</goal>
+                        </goals>
+                        <configuration>
+                            <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                        </configuration>
+                    </execution>
+
+                    <!-- Deploy the application on install -->
+                    <execution>
+                        <id>deploy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <resources>
@@ -87,6 +130,20 @@
             <artifactId>${jpos.artifactId}</artifactId>
             <version>${jpos.version}</version>
             <type>sar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${web.artifactId}</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${model.artifactId}</artifactId>
+            <version>${model.version}</version>
+            <type>ejb</type>
         </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,7 @@
+<mux class="com.npci.financial.isc.core.server.mux.SwitchMux"
+     name="switch-ndc-mux" logger="Q2">
+    <in>switch-ndc-receive</in>
+    <out>switch-ndc-send</out>
+    <unhandled>switch-ndc-unhandled</unhandled>
+    <key>message-coordination-number</key>
+</mux>

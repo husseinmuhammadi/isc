@@ -6,6 +6,6 @@
     </loader-repository>
 
     <module>
-        <service>q2mbean-1.0.sar</service>
+        <service>jboss-service.sar</service>
     </module>
 </jboss-app>

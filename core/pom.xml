@@ -67,6 +67,55 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.3</version>
+
+                <executions>
+                    <execution>
+                        <id>copy-datasource</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${env.JBOSS_HOME}/bin/q2/deploy</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/config/deploy</directory>
+                                    <includes>
+                                        <include>atm-ndc-server.xml</include>
+                                        <include>switch-channel-adapter.xml</include>
+                                        <include>switch-mux.xml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-mysql-driver</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${env.JBOSS_HOME}/server/default/lib</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${settings.localRepository}/mysql/mysql-connector-java/5.1.6
+                                    </directory>
+                                    <includes>
+                                        <include>mysql-connector-java-5.1.6.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
