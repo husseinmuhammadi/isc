@@ -1,9 +1,6 @@
 package com.npci.financial.isc.core.atm.ndc.channel;
 
-import org.jpos.iso.BaseChannel;
-import org.jpos.iso.ISOHeader;
-import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
+import org.jpos.iso.*;
 import org.jpos.util.LogEvent;
 import org.jpos.util.Logger;
 
@@ -93,5 +90,8 @@ public class AtmNdcChannel extends BaseChannel {
         return super.getHeader();
     }
 
-
+    @Override
+    protected int getMessageLength() throws IOException, ISOException {
+        return super.getMessageLength();
+    }
 }
