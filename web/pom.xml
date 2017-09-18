@@ -16,6 +16,28 @@
     <packaging>war</packaging>
 
     <dependencies>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${utility.artifactId}</artifactId>
+            <version>${utility.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${api.artifactId}</artifactId>
+            <version>${api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${model.artifactId}</artifactId>
+            <version>${model.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -70,19 +92,48 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${model.artifactId}</artifactId>
-            <version>${model.version}</version>
-            <scope>provided</scope>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <!--
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.15</version>
+        </dependency>
+        -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.15</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>${api.artifactId}</artifactId>
-            <version>${api.version}</version>
-            <scope>provided</scope>
+            <artifactId>${core.artifactId}</artifactId>
+            <version>${core.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.0</version>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${jsf.artifactId}</artifactId>
+            <version>${jsf.version}</version>
+        </dependency>
+        -->
 
     </dependencies>
 
@@ -96,6 +147,9 @@
                 <configuration>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifestEntries>
+                            <Class-Path>${api.archive.name}</Class-Path>
+                        </manifestEntries>
                     </archive>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>

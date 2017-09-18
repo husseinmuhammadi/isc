@@ -7,9 +7,9 @@ import java.util.ResourceBundle;
 public class ResourceManager {
     private ResourceBundle bundle;
 
-    protected static final String LABEL_BUNDLE = "com/dpi/financial/ftcom/web/i18n/label/messages";
+    protected static final String LABEL_BUNDLE = "com/npci/financial/isc/web/i18n/label/messages";
 
-    protected static final String MESSAGE_BUNDLE = "com/dpi/financial/ftcom/web/i18n/message/messages";
+    protected static final String MESSAGE_BUNDLE = "com/npci/financial/isc/web/i18n/message/messages";
 
     /**
      *

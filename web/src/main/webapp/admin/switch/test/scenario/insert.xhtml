@@ -1,11 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/base/template.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{testScenarioController.id}"/>
+            <f:viewAction action="#{testScenarioController.onLoad}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="header">
+        <h2>#{lbl['label.testScenario.new']}</h2>
+    </ui:define>
+
+    <f:viewAction action="#{testScenarioController.onLoad}"/>
+
+
+    <ui:define name="content">
+        <h:form class="form-group" style="direction: rtl">
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="testConditionType"
+                                       value="#{lbl['label.testScenario.testConditionType']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.testConditionType}"
+                                     id="testConditionType" label="#{lbl['label.testScenario.testConditionType']}"
+                                     required="true" styleClass="form-control">
+                        <!--<f:selectItem itemLabel="#{lbl['label.select.empty']}" itemValue=""/>-->
+                        <f:selectItems value="#{selectItemsController.testConditionTypeItems.entrySet()}" var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="financialServiceProvider"
+                                       value="#{lbl['label.testScenario.financialServiceProvider']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.interactionPoint}"
+                                     id="financialServiceProvider"
+                                     label="#{lbl['label.testScenario.financialServiceProvider']}"
+                                     required="true" styleClass="form-control">
+                        <!--<f:selectItem itemLabel="#{lbl['label.select.empty']}" itemValue=""/>-->
+                        <f:selectItems value="#{selectItemsController.interactionPointItems.entrySet()}"
+                                       var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="processingCode"
+                                       value="#{lbl['label.testScenario.processingCode']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.processingCode}"
+                                     id="processingCode" label="#{lbl['label.testScenario.processingCode']}"
+                                     styleClass="form-control" required="false">
+                        <f:selectItems value="#{selectItemsController.processingCodeItems.entrySet()}" var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="deviceCode" value="#{lbl['label.testScenario.deviceCode']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.deviceCode}"
+                                     id="deviceCode" label="#{lbl['label.testScenario.deviceCode']}"
+                                     styleClass="form-control" required="false">
+                        <f:selectItems value="#{selectItemsController.deviceCodeItems.entrySet()}" var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="productCode" value="#{lbl['label.testScenario.productCode']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.productCode}"
+                                     id="productCode" label="#{lbl['label.testScenario.productCode']}"
+                                     styleClass="form-control" required="false">
+                        <f:selectItems value="#{selectItemsController.productCodeItems.entrySet()}" var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="transactionMode"
+                                       value="#{lbl['label.testScenario.transactionMode']}"/>
+                    </div>
+                    <h:selectOneMenu value="#{testScenarioController.testScenario.transactionMode}"
+                                     id="transactionMode" label="#{lbl['label.testScenario.transactionMode']}"
+                                     styleClass="form-control" required="false">
+                        <f:selectItems value="#{selectItemsController.transactionModeItems.entrySet()}" var="items"
+                                       itemLabel="#{items.value}" itemValue="#{items.key}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="comments" value="#{lbl['label.testScenario.comments']}"/>
+                    </div>
+                    <h:inputText value="#{testScenarioController.testScenario.comments}"
+                                 id="comments" label="#{lbl['label.testScenario.comments']}"
+                                 styleClass="form-control" required="false"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="environmentInformation"
+                                       value="#{lbl['label.testScenario.environmentInformation']}"/>
+                    </div>
+                    <h:inputText value="#{testScenarioController.testScenario.environmentInformation}"
+                                 id="environmentInformation"
+                                 label="#{lbl['label.testScenario.environmentInformation']}"
+                                 styleClass="form-control" required="false"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="scenario" value="#{lbl['label.testScenario.scenario']}"/>
+                    </div>
+                    <h:inputText value="#{testScenarioController.testScenario.scenario}"
+                                 id="scenario" label="#{lbl['label.testScenario.scenario']}"
+                                 styleClass="form-control" required="true"/>
+                </div>
+            </div>
+
+            <h:commandButton value="#{lbl['button.save']}" action="#{testScenarioController.create()}"
+                             styleClass="btn btn-default"/>
+            <h:commandButton value="#{lbl['button.edit']}" action="#{testScenarioController.update()}"
+                             styleClass="btn btn-default"/>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

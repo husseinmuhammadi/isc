@@ -35,6 +35,18 @@
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <generateApplicationXml>true</generateApplicationXml>
                     <modules>
+                        <ejbModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${model.artifactId}</artifactId>
+                            <bundleFileName>${model.archive.name}</bundleFileName>
+                        </ejbModule>
+                        <jarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${api.artifactId}</artifactId>
+                            <bundleFileName>${api.archive.name}</bundleFileName>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                            <bundleDir>/</bundleDir>
+                        </jarModule>
                         <jarModule>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>${core.artifactId}</artifactId>
@@ -42,15 +54,10 @@
                             <includeInApplicationXml>true</includeInApplicationXml>
                             <bundleDir>/</bundleDir>
                         </jarModule>
-                        <sarModule>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${jpos.artifactId}</artifactId>
-                            <bundleFileName>${jpos.archive.name}</bundleFileName>
-                        </sarModule>
                         <ejbModule>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>${model.artifactId}</artifactId>
-                            <bundleFileName>${model.archive.name}</bundleFileName>
+                            <artifactId>${service.artifactId}</artifactId>
+                            <bundleFileName>${service.archive.name}</bundleFileName>
                         </ejbModule>
                         <webModule>
                             <groupId>${project.groupId}</groupId>
@@ -58,6 +65,11 @@
                             <bundleFileName>${web.archive.name}</bundleFileName>
                             <contextRoot>${web.contextRoot}</contextRoot>
                         </webModule>
+                        <sarModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${jpos.artifactId}</artifactId>
+                            <bundleFileName>${jpos.archive.name}</bundleFileName>
+                        </sarModule>
                     </modules>
                     <!-- create jboss-app.xml and put it in META-INF folder, you can create this file manually
                     <jboss>
@@ -67,6 +79,34 @@
                         <loader-repository>com.foo:loader=foo-application-1.0.ear</loader-repository>
                     </jboss>
                     -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>junit</groupId>
+                            <artifactId>junit</artifactId>
+                            <overWrite>false</overWrite>
+                            <outputDirectory>${project.build.directory}/alternateLocation</outputDirectory>
+                            <destFileName>optional-new-name.jar</destFileName>
+                        </artifactItem>
+                    </artifactItems>
+                    <outputDirectory>${project.build.directory}/wars</outputDirectory>
+                    <overWriteReleases>false</overWriteReleases>
+                    <overWriteSnapshots>true</overWriteSnapshots>
                 </configuration>
             </plugin>
             <plugin>
@@ -121,6 +161,32 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>${model.artifactId}</artifactId>
+            <version>${model.version}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>utility</artifactId>
+            <version>${utility.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${api.artifactId}</artifactId>
+            <version>${api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${service.artifactId}</artifactId>
+            <version>${service.version}</version>
+            <type>ejb</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>${core.artifactId}</artifactId>
             <version>${core.version}</version>
         </dependency>
@@ -135,15 +201,9 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${web.artifactId}</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${web.version}</version>
             <type>war</type>
         </dependency>
 
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${model.artifactId}</artifactId>
-            <version>${model.version}</version>
-            <type>ejb</type>
-        </dependency>
     </dependencies>
 </project>
