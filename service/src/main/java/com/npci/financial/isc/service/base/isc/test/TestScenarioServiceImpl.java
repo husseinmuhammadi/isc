@@ -5,9 +5,11 @@ import com.npci.financial.isc.model.base.GenericDao;
 import com.npci.financial.isc.model.to.isc.test.TestScenario;
 import com.npci.financial.isc.service.base.GeneralServiceImpl;
 
-/**
- * Created by h.mohammadi on 9/16/2017.
- */
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+
+@Stateless
+@Local(TestScenarioService.class)
 public class TestScenarioServiceImpl extends GeneralServiceImpl<TestScenario> implements TestScenarioService {
     @Override
     public GenericDao<TestScenario> getGenericDao() {
