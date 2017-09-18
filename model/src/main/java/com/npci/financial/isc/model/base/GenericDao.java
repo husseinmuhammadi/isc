@@ -36,12 +36,10 @@ public abstract class GenericDao<T extends EntityBase> {
     }
 
     public void remove(T t) {
-        // t.setDeleted(true);
-        // entityManager.merge(t);
-
-        logger.info(MessageFormat.format("removing entity {0}", t.getId()));
-        entityManager.remove(t);
-        logger.info(MessageFormat.format("entity {0} removed.", t.getId()));
+        if (entityManager.contains(t))
+            entityManager.remove(t);
+        else
+            entityManager.remove(entityManager.getReference(entityBeanType, t.getId()));
     }
 
     public T update(T t) {
@@ -52,7 +50,8 @@ public abstract class GenericDao<T extends EntityBase> {
                 return entityManager.merge(t);
             }
         }
-        return null;
+        // throw new EntityIdIsNullException(t.getClass().getName() + " not contain id when merge operation occurred");
+        return entityManager.merge(t);
     }
 
     public T findById(Long id) {

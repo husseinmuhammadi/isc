@@ -15,6 +15,7 @@ import com.npci.financial.isc.model.type.isc.transaction.ProcessingCode;
 import com.npci.financial.isc.model.type.isc.transaction.TransactionMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * http://www.softwaretestingclass.com/what-is-difference-between-test-cases-vs-test-scenarios/
@@ -43,7 +44,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = TestScenario.FIND_ALL, query = "select t from TestScenario t where t.deleted = false")
 })
-public class TestScenario extends EntityBase {
+public class TestScenario extends EntityBase implements Serializable {
 
     public static final String FIND_ALL = "TestScenario.findAll";
 

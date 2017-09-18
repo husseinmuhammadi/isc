@@ -15,6 +15,7 @@ import java.util.List;
 @ViewScoped
 public class TestScenarioManager extends ManagerBase<TestScenario> implements Serializable {
 
+    @EJB
     private TestScenarioService testScenarioService;
 
     public TestScenarioManager() {

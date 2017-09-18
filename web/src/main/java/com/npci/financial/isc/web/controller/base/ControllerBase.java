@@ -129,7 +129,6 @@ public abstract class ControllerBase<T extends EntityBase> extends AbstractContr
 
     @Override
     public String delete(Long id) {
-        System.out.println(">>>>>> com.dpi.financial.ftcom.web.controller.base.ControllerBase.delete(java.lang.Long)");
         try {
             entity = getGeneralServiceApi().find(id);
         } catch (Exception e) {

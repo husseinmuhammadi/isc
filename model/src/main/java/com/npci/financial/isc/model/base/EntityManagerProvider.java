@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContextType;
 @Singleton
 public class EntityManagerProvider {
 
-    @PersistenceContext(unitName = "library-persistence-unit")
+    @PersistenceContext(unitName = "switch-persistence-unit")
     private EntityManager entityManager;
 
     @Produces
