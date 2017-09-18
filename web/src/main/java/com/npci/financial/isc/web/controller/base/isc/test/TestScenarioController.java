@@ -11,7 +11,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class TestScenarioController extends ControllerBase<TestScenario> implements Serializable {
 
