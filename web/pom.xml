@@ -127,14 +127,11 @@
             <version>6.0</version>
         </dependency>
 
-        <!--
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${jsf.artifactId}</artifactId>
             <version>${jsf.version}</version>
         </dependency>
-        -->
-
     </dependencies>
 
     <build>

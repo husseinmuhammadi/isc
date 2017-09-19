@@ -23,13 +23,12 @@ public class TestScenarioManager extends ManagerBase<TestScenario> implements Se
     }
 
     @Override
-    protected void onLoad() {
-
+    public GeneralServiceApi<TestScenario> getGeneralServiceApi() {
+        return testScenarioService;
     }
 
     @Override
-    public GeneralServiceApi<TestScenario> getGeneralServiceApi() {
-        return testScenarioService;
+    protected void onLoad() {
     }
 
     public List<TestScenario> getTestScenarios() {

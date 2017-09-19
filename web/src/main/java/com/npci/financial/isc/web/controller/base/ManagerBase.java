@@ -45,9 +45,9 @@ public abstract class ManagerBase<T extends EntityBase> extends AbstractControll
         // return url;
     }
 
-    protected abstract void onLoad();
-
     public abstract GeneralServiceApi<T> getGeneralServiceApi();
+
+    protected abstract void onLoad();
 
     public List<T> getEntityList() {
         return entityList;

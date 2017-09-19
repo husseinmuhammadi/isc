@@ -6,7 +6,6 @@ import com.npci.financial.isc.model.to.isc.test.TestScenario;
 import com.npci.financial.isc.web.controller.base.ControllerBase;
 
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -20,11 +19,7 @@ public class TestScenarioController extends ControllerBase<TestScenario> impleme
     }
 
     @EJB
-    private TestScenarioService testScenarioService;
-
-    @Override
-    public void afterLoad() {
-    }
+    private TestScenarioService service;
 
     public TestScenario getTestScenario() {
         return super.getEntity();
@@ -36,10 +31,10 @@ public class TestScenarioController extends ControllerBase<TestScenario> impleme
 
     @Override
     public GeneralServiceApi<TestScenario> getGeneralServiceApi() {
-        return testScenarioService;
+        return service;
     }
 
     @Override
-    public void init() {
+    public void afterLoad() {
     }
 }

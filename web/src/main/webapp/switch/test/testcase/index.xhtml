@@ -6,36 +6,40 @@
                 template="/base/template.xhtml">
 
     <ui:define name="header">
-        <h2>#{lbl['label.testScenario.list']}</h2>
+        <h2>#{lbl['label.testCase.list']}</h2>
     </ui:define>
 
     <ui:define name="content">
         <h:form style="direction: rtl">
-            <!--<h:outputText style="color:blue" value="Flash Variable Without Keep: #{flash.keep.message.summary}"/>-->
             <h:link outcome="insert">
                 <h:graphicImage alt="add" library="images" name="add.png" width="36"
                                 styleClass="img-responsive"/>
             </h:link>
 
-            <h:dataTable value="#{testScenarioManager.testScenarios}" var="testScenario"
+            <h:dataTable value="#{testCaseManager.testCases}" var="testCase"
                          styleClass="table table-striped table-bordered dt-responsive nowrap"
                          headerClass="employeeTableHeader" rowClasses="employeeTableOddRow,employeeTableEvenRow">
 
                 <h:column>
                     <f:facet name="header">#{lbl['label.entity.id']}</f:facet>
-                    #{testScenario.id}
+                    #{testCase.id}
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">#{lbl['label.testScenario.scenario']}</f:facet>
-                    <h:link value="#{testScenario.scenario}" outcome="profile">
-                        <f:param name="id" value="#{testScenario.scenario}"/>
+                    <f:facet name="header">#{lbl['label.testCase.testCaseId']}</f:facet>
+                    <h:link value="#{testCase.testCaseID}" outcome="profile">
+                        <f:param name="id" value="#{testCase.id}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
+                    <f:facet name="header">#{lbl['label.testCase.testCaseDescription']}</f:facet>
+                    #{testCase.testCaseDescription}
+                </h:column>
+
+                <h:column>
                     <f:facet name="header">#{lbl['label.entity.description']}</f:facet>
-                    #{testScenario.description}
+                    #{testCase.description}
                 </h:column>
 
                 <h:column>
@@ -44,20 +48,20 @@
                         <tr>
                             <td>
                                 <h:link outcome="insert">
-                                    <f:param name="id" value="#{testScenario.id}"/>
+                                    <f:param name="id" value="#{testCase.id}"/>
                                     <h:graphicImage alt="edit" library="images" name="edit.png" width="20"
                                                     styleClass="img-responsive"/>
                                 </h:link>
                             </td>
                             <td>
-                                <h:commandLink action="#{testScenarioController.delete(testScenario.id)}">
+                                <h:commandLink action="#{testCaseController.delete(testCase.id)}">
                                     <h:graphicImage alt="delete" library="images" name="delete.png" width="20"
                                                     styleClass="img-responsive"/>
                                     <!--<f:ajax execute="@form" render="@form" />-->
                                 </h:commandLink>
                             </td>
                             <td>
-                                <h:commandLink action="#{testScenarioController.refresh}">
+                                <h:commandLink action="#{testCaseController.refresh}">
                                     <h:graphicImage alt="reload" library="images" name="reload.png" width="20"
                                                     styleClass="img-responsive"/>
                                 </h:commandLink>

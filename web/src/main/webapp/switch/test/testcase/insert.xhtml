@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/base/template.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{testCaseController.id}"/>
+            <f:viewAction action="#{testCaseController.onLoad}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="header">
+        <h2>#{lbl['label.testCase.new']}</h2>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form class="form-group" style="direction: rtl">
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="testCaseID" value="#{lbl['label.testCase.testCaseId']}"/>
+                    </div>
+                    <h:inputText value="#{testCaseController.testCase.testCaseID}"
+                                 id="testCaseID" label="#{lbl['label.testCase.testCaseId']}"
+                                 styleClass="form-control" required="true"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <h:outputLabel for="scenario" value="#{lbl['label.testCase.scenario']}"/>
+                    </div>
+                    <h:inputText value="#{testCaseController.testCase.scenario}"
+                                 id="scenario" label="#{lbl['label.testCase.scenario']}"
+                                 styleClass="form-control" required="true"/>
+                </div>
+            </div>
+
+            <h:commandButton value="#{lbl['button.save']}" action="#{testCaseController.create()}"
+                             styleClass="btn btn-default"/>
+            <h:commandButton value="#{lbl['button.edit']}" action="#{testCaseController.update()}"
+                             styleClass="btn btn-default"/>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
