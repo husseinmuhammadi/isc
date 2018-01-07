@@ -10,29 +10,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by h.mohammadi on 9/13/2017.
+ * Created by h.mohammadi on 1/7/2018.
  */
-public class NdcPackager implements ISOPackager {
-
+public class NdcBasePackager implements ISOPackager {
     @Override
     public byte[] pack(ISOComponent isoComponent) throws ISOException {
-        NdcMsg ndcMsg = (NdcMsg) isoComponent;
-        return ndcMsg.getMessage();
+        return new byte[0];
     }
 
     @Override
     public int unpack(ISOComponent isoComponent, byte[] bytes) throws ISOException {
-        NdcMsg ndcMsg = (NdcMsg) isoComponent;
-        ndcMsg.setMessage(bytes);
-        /*
-        try {
-            unpack(isoComponent, new ByteArrayInputStream(bytes));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new ISOException(e);
-        }
-        */
-        return bytes.length;
+        return 0;
     }
 
     @Override

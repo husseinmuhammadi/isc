@@ -34,7 +34,7 @@ public class AtmNdcChannel extends BaseChannel {
     @Override
     protected byte[] streamReceive() throws IOException {
         int i = 0;
-        byte[] buf = new byte[4096];
+        byte[] buffer = new byte[4096];
         for (i = 0; i < 4096; i++) {
             int c = -1;
             try {
@@ -49,14 +49,15 @@ public class AtmNdcChannel extends BaseChannel {
             } else if (c == -1) {
                 throw new EOFException("connection closed");
             }
-            buf[i] = (byte) c;
+            buffer[i] = (byte) c;
         }
+
         if (i == 4096) {
             throw new IOException("packet too long");
         }
 
         byte[] d = new byte[i + 1];
-        System.arraycopy(buf, 0, d, 0, i);
+        System.arraycopy(buffer, 0, d, 0, i);
         d[i] = 3;
         LogEvent evt = new LogEvent(this, "fsd-channel-debug");
         evt.addMessage("received message: " + new String(d, StandardCharsets.US_ASCII));
@@ -67,6 +68,7 @@ public class AtmNdcChannel extends BaseChannel {
     @Override
     protected int getHeaderLength() {
         // return super.getHeaderLength();
+        System.out.println("---------> com.npci.financial.isc.core.atm.ndc.channel.AtmNdcChannel.getHeaderLength()");
         return 4;
     }
 
@@ -81,6 +83,11 @@ public class AtmNdcChannel extends BaseChannel {
     }
 
     @Override
+    protected ISOPackager getDynamicPackager(byte[] header, byte[] image) {
+        return super.getDynamicPackager(header, image);
+    }
+
+    @Override
     protected ISOHeader getDynamicHeader(byte[] image) {
         return super.getDynamicHeader(image);
     }
@@ -88,10 +95,5 @@ public class AtmNdcChannel extends BaseChannel {
     @Override
     public byte[] getHeader() {
         return super.getHeader();
-    }
-
-    @Override
-    protected int getMessageLength() throws IOException, ISOException {
-        return super.getMessageLength();
     }
 }

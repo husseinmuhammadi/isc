@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.jpos</groupId>
             <artifactId>jpos</artifactId>
-            <version>2.0.6</version>
+            <version>2.1.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/jdom/jdom -->
@@ -27,13 +27,6 @@
             <groupId>jdom</groupId>
             <artifactId>jdom</artifactId>
             <version>1.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.perf4j/perf4j -->
@@ -87,8 +80,8 @@
                                     <directory>src/main/resources/config/deploy</directory>
                                     <includes>
                                         <include>atm-ndc-server.xml</include>
-                                        <include>switch-channel-adapter.xml</include>
-                                        <include>switch-mux.xml</include>
+                                        <!--<include>switch-channel-adapter.xml</include>-->
+                                        <!--<include>switch-mux.xml</include>-->
                                     </includes>
                                 </resource>
                             </resources>
