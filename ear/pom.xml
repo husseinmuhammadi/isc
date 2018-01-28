@@ -125,6 +125,7 @@
 
                 <executions>
                     <!-- Undeploy the application on clean -->
+                    <!--
                     <execution>
                         <id>undeploy</id>
                         <phase>clean</phase>
@@ -135,8 +136,10 @@
                             <ignoreMissingDeployment>true</ignoreMissingDeployment>
                         </configuration>
                     </execution>
+                    -->
 
                     <!-- Deploy the application on install -->
+                    <!--
                     <execution>
                         <id>deploy</id>
                         <phase>install</phase>
@@ -144,6 +147,7 @@
                             <goal>deploy</goal>
                         </goals>
                     </execution>
+                    -->
                 </executions>
             </plugin>
         </plugins>
