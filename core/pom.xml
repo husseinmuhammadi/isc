@@ -81,8 +81,8 @@
                                     <includes>
                                         <include>atm-ndc-server.xml</include>
                                         <include>shetab-server.xml</include>
-                                        <!--<include>shetab-channel-adapter.xml</include>-->
-                                        <!--<include>shetab-mux.xml</include>-->
+                                        <include>shetab-channel-adapter.xml</include>
+                                        <include>shetab-mux.xml</include>
                                         <!--<include>switch-channel-adapter.xml</include>-->
                                         <!--<include>switch-mux.xml</include>-->
                                     </includes>
