@@ -1,0 +1,5 @@
+<mux class="org.jpos.q2.iso.QMUX" logger="Q2" name="shetab-mux">
+	<in>shetab-receive</in>
+	<out>shetab-send</out>
+	<unhandled>shetab-mux.unhandled</unhandled>
+</mux>
